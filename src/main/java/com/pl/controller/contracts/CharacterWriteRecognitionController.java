@@ -8,5 +8,5 @@ import org.springframework.web.bind.annotation.RestController;
 public interface CharacterWriteRecognitionController <O ,I> {
 
     @PostMapping("multilinguify/lang/{lang}/validate/write")
-    public ResponseEntity<O> writeController(I i);
+    public ResponseEntity<O> writeController(I i,String lang);
 }

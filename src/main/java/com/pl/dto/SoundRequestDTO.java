@@ -3,7 +3,7 @@ package com.pl.dto;
 import lombok.Data;
 
 @Data
-public class SoundDTO {
+public class SoundRequestDTO {
 
     private String encodedAudio;
 }

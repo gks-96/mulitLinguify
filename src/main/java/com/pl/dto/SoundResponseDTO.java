@@ -5,5 +5,9 @@ import lombok.Data;
 @Data
 public class SoundResponseDTO {
 
-    private String encodedAudio;
+    private String character;
+
+    private Double percentageAccuracy;
+
+    private String error;
 }
