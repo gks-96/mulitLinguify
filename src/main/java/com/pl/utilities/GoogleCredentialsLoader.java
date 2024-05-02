@@ -1,4 +1,4 @@
-package com.pl.util;
+package com.pl.utilities;
 
 import com.google.auth.oauth2.GoogleCredentials;
 import com.google.auth.oauth2.ServiceAccountCredentials;

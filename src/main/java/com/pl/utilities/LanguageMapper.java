@@ -1,6 +1,5 @@
-package com.pl.util;
+package com.pl.utilities;
 
-import java.lang.constant.Constable;
 import java.util.HashMap;
 
 public class LanguageMapper {

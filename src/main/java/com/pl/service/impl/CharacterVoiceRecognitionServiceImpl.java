@@ -5,13 +5,11 @@ import com.google.protobuf.ByteString;
 import com.pl.dto.SoundRequestDTO;
 import com.pl.dto.SoundResponseDTO;
 import com.pl.service.contracts.CharacterVoiceRecognitionService;
-import com.pl.util.Base64Decoder;
-import com.pl.util.LanguageMapper;
+import com.pl.utilities.Base64Decoder;
+import com.pl.utilities.LanguageMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.io.IOException;
-import java.util.Base64;
 import java.util.List;
 
 @Service

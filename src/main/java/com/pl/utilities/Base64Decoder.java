@@ -1,4 +1,4 @@
-package com.pl.util;
+package com.pl.utilities;
 
 import com.google.protobuf.ByteString;
 import org.springframework.stereotype.Component;

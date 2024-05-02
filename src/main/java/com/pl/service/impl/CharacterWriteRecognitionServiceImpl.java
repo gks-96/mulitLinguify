@@ -7,15 +7,12 @@ import com.google.protobuf.ByteString;
 import com.pl.dto.WriteRequestDTO;
 import com.pl.dto.WriteResponseDTO;
 import com.pl.service.contracts.CharacterWriteRecognitionService;
-import com.pl.util.Base64Decoder;
+import com.pl.utilities.Base64Decoder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Base64;
 import java.util.List;
 
 @Component
