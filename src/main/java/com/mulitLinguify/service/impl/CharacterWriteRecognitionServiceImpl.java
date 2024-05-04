@@ -1,13 +1,13 @@
-package com.pl.service.impl;
+package com.mulitLinguify.service.impl;
 
 import com.google.cloud.vision.v1.*;
 import com.google.protobuf.ByteString;
 
 
-import com.pl.dto.WriteRequestDTO;
-import com.pl.dto.WriteResponseDTO;
-import com.pl.service.contracts.CharacterWriteRecognitionService;
-import com.pl.utilities.Base64Decoder;
+import com.mulitLinguify.dto.WriteRequestDTO;
+import com.mulitLinguify.dto.WriteResponseDTO;
+import com.mulitLinguify.service.contracts.CharacterWriteRecognitionService;
+import com.mulitLinguify.utilities.Base64Decoder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

@@ -1,4 +1,4 @@
-package com.pl.utilities;
+package com.mulitLinguify.utilities;
 
 import com.google.protobuf.ByteString;
 import org.springframework.stereotype.Component;

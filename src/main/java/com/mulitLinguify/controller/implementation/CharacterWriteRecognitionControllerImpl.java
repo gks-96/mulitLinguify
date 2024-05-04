@@ -1,11 +1,11 @@
-package com.pl.controller.implementation;
+package com.mulitLinguify.controller.implementation;
 
 
 
-import com.pl.controller.contracts.CharacterWriteRecognitionController;
-import com.pl.dto.WriteRequestDTO;
-import com.pl.dto.WriteResponseDTO;
-import com.pl.service.contracts.CharacterWriteRecognitionService;
+import com.mulitLinguify.controller.contracts.CharacterWriteRecognitionController;
+import com.mulitLinguify.dto.WriteRequestDTO;
+import com.mulitLinguify.dto.WriteResponseDTO;
+import com.mulitLinguify.service.contracts.CharacterWriteRecognitionService;
 //import com.pl.service.impl.DetectText;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatusCode;

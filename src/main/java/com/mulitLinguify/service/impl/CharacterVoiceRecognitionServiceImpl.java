@@ -1,12 +1,12 @@
-package com.pl.service.impl;
+package com.mulitLinguify.service.impl;
 
 import com.google.cloud.speech.v1.*;
 import com.google.protobuf.ByteString;
-import com.pl.dto.SoundRequestDTO;
-import com.pl.dto.SoundResponseDTO;
-import com.pl.service.contracts.CharacterVoiceRecognitionService;
-import com.pl.utilities.Base64Decoder;
-import com.pl.utilities.LanguageMapper;
+import com.mulitLinguify.dto.SoundRequestDTO;
+import com.mulitLinguify.dto.SoundResponseDTO;
+import com.mulitLinguify.service.contracts.CharacterVoiceRecognitionService;
+import com.mulitLinguify.utilities.Base64Decoder;
+import com.mulitLinguify.utilities.LanguageMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

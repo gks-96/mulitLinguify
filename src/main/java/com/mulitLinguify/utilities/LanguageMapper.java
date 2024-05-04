@@ -1,4 +1,4 @@
-package com.pl.utilities;
+package com.mulitLinguify.utilities;
 
 import java.util.HashMap;
 

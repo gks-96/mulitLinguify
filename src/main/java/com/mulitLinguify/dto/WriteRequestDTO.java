@@ -1,4 +1,4 @@
-package com.pl.dto;
+package com.mulitLinguify.dto;
 
 import lombok.Data;
 

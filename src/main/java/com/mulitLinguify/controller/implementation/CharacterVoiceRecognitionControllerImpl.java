@@ -1,23 +1,18 @@
-package com.pl.controller.implementation;
+package com.mulitLinguify.controller.implementation;
 
 
-import com.pl.controller.contracts.CharacterVoiceRecognitionController;
+import com.mulitLinguify.controller.contracts.CharacterVoiceRecognitionController;
 
-import com.pl.dto.SoundRequestDTO;
-import com.pl.dto.SoundResponseDTO;
+import com.mulitLinguify.dto.SoundRequestDTO;
+import com.mulitLinguify.dto.SoundResponseDTO;
 //import com.pl.service.impl.CharacterVoiceRecognitionService;
 //import com.pl.service.impl.CharacterVoiceRecognitionServiceGCP;
-import com.pl.service.contracts.CharacterVoiceRecognitionService;
+import com.mulitLinguify.service.contracts.CharacterVoiceRecognitionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
-
-import java.io.IOException;
-
 
 
 public class CharacterVoiceRecognitionControllerImpl implements CharacterVoiceRecognitionController<SoundResponseDTO, SoundRequestDTO> {

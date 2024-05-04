@@ -1,9 +1,9 @@
-package com.pl.dto;
+package com.mulitLinguify.dto;
 
 import lombok.Data;
 
 @Data
-public class SoundResponseDTO {
+public class WriteResponseDTO {
 
     private String character;
 

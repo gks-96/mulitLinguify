@@ -1,4 +1,4 @@
-package com.pl;
+package com.mulitLinguify;
 
 
 import org.springframework.boot.SpringApplication;

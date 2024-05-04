@@ -1,4 +1,4 @@
-package com.pl.service.contracts;
+package com.mulitLinguify.service.contracts;
 
 
 import org.springframework.stereotype.Service;

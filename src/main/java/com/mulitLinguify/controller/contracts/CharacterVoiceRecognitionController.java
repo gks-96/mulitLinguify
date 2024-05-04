@@ -1,4 +1,4 @@
-package com.pl.controller.contracts;
+package com.mulitLinguify.controller.contracts;
 
 
 import org.springframework.http.ResponseEntity;
