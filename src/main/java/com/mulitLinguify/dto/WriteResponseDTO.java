@@ -1,8 +1,9 @@
 package com.mulitLinguify.dto;
 
 import lombok.Data;
+import lombok.Setter;
 
-@Data
+@Setter
 public class WriteResponseDTO {
 
     private String character;

@@ -1,8 +1,9 @@
 package com.mulitLinguify.dto;
 
 import lombok.Data;
+import lombok.Getter;
 
-@Data
+@Getter
 public class WriteRequestDTO {
 
     private String correctImage;

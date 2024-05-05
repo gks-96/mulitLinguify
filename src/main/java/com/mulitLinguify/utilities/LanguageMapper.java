@@ -16,7 +16,12 @@ public class LanguageMapper {
 
         public static String getLanguage(String key)
         {
-            return map.get(key);
+
+            if ( map.containsKey(key))
+            {
+                return map.get(key);
+            }
+            return "";
         }
 
 }
