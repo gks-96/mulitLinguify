@@ -2,6 +2,7 @@ package com.mulitLinguify.utilities;
 
 
 
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -15,24 +16,25 @@ public class LanguageMapperTest {
     LanguageMapper mapper = new LanguageMapper();
 
 
-    String inputLanguage  = "pan";
-    String expectedLanguage ="pa-Guru-IN";
-
-
-
-    @org.junit.jupiter.api.Test
-    void getLanguageWhenExists()
+     @Test
+    void testLanguageWhenExistsTest()
     {
-        System.out.println(mapper.map);
-      assertEquals(expectedLanguage,mapper.getLanguage(inputLanguage));
+        String inputLanguage  = "punjabi";
+        String expectedLanguage ="pa-Guru-IN";
+        System.out.println(LanguageMapper.map);
+        assertEquals(expectedLanguage,
+                   LanguageMapper.getLanguage(inputLanguage));
     }
 
-    @org.junit.jupiter.api.Test
-    void getLanguageWhenDoesNoExists()
+
+    @Test
+    void testLanguageWhenDoesNoExistsTest()
     {
-          inputLanguage = "pun";  // testing when language does not exists
+        String inputLanguage = "pan";  // testing when language does not exists
+//        String expectedLanguage ="pa-Guru-IN";
         String expectedLanguage="";
-        assertEquals(expectedLanguage,mapper.getLanguage(inputLanguage));
+        assertEquals(expectedLanguage,
+                     LanguageMapper.getLanguage(inputLanguage));
     }
 }
 

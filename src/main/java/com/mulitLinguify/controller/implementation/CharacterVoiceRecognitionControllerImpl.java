@@ -13,8 +13,11 @@ import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 
+@RestController
 public class CharacterVoiceRecognitionControllerImpl implements CharacterVoiceRecognitionController<SoundResponseDTO, SoundRequestDTO> {
 
     @Autowired
@@ -37,9 +40,14 @@ public class CharacterVoiceRecognitionControllerImpl implements CharacterVoiceRe
 //    }
 
     @PostMapping("multilinguify/lang/{lang}/validate/audio")
-    public ResponseEntity<SoundResponseDTO> voiceController(SoundRequestDTO soundRequestDTO,@PathVariable String lang) {
+    public ResponseEntity<SoundResponseDTO> voiceController(@RequestBody  SoundRequestDTO soundRequestDTO, @PathVariable String lang) {
+//        System.out.println("input is --" + soundRequestDTO.getEncodedAudio());
         SoundResponseDTO result = characterVoiceRecognitionService.voiceRecognize(soundRequestDTO,lang);
-                if ( result.getError().equals(""))
+
+
+//        System.out.println("result is + + " + result.getPercentageAccuracy());
+
+                if ( !result.getError().equals(""))
                 {
                     return new ResponseEntity<>(result,
                                                 HttpStatusCode.valueOf(400));

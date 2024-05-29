@@ -13,8 +13,6 @@ public class MultiLinguifyApplication {
     public static void main(String[] args) {
         SpringApplication.run(MultiLinguifyApplication.class ,
                               args);
-
     }
-
 
 }

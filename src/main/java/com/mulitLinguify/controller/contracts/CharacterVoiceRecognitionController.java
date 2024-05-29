@@ -23,6 +23,6 @@ public interface CharacterVoiceRecognitionController<O, I> {
      * @param lang The language identifier specifying the language for recognition.
      * @return A ResponseEntity representing the response to the recognition request.
      */
-    @PostMapping("multilinguify/lang/{lang}/validate/audio")
+    @PostMapping("/multilinguify/lang/{lang}/validate/audio")
     ResponseEntity<O> voiceController(I i, @PathVariable String lang);
 }

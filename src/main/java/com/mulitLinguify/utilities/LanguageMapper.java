@@ -9,14 +9,13 @@ public class LanguageMapper {
 
        static  HashMap<String,String> map = new HashMap<>();
         static {
-            map.put("pan","pa-Guru-IN");
-            map.put("en","en-IN");
-            map.put("hin","hi-IN");
+            map.put("punjabi","pa-Guru-IN");
+            map.put("english","en-US");
+            map.put("hindi","hi-IN");
         }
 
         public static String getLanguage(String key)
         {
-
             if ( map.containsKey(key))
             {
                 return map.get(key);

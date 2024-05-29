@@ -8,5 +8,5 @@ import java.io.IOException;
 @Service
 public interface CharacterWriteRecognitionService<O,I>{
 
-    public O writerecognize(I i) throws IOException;
+    O writerecognize(I i,String lang) throws IOException;
 }

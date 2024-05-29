@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 @Service
 public interface CharacterVoiceRecognitionService<O,I>
 {
-    public O voiceRecognize(I i, String language) ;
+    O voiceRecognize(I i, String language) ;
 
 
 }

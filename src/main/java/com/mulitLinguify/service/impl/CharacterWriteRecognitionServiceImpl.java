@@ -8,6 +8,7 @@ import com.mulitLinguify.dto.WriteRequestDTO;
 import com.mulitLinguify.dto.WriteResponseDTO;
 import com.mulitLinguify.service.contracts.CharacterWriteRecognitionService;
 import com.mulitLinguify.utilities.Base64Decoder;
+import com.mulitLinguify.utilities.LanguageMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -132,19 +133,37 @@ public class CharacterWriteRecognitionServiceImpl implements CharacterWriteRecog
 //    }
 
 
+
     @Override
-    public WriteResponseDTO writerecognize(WriteRequestDTO writeRequestDTO) throws IOException {
+    public WriteResponseDTO writerecognize(WriteRequestDTO writeRequestDTO,String lang) throws IOException {
                 ArrayList<WriteRequestDTO> temp = new ArrayList<>();
 
                 List<AnnotateImageRequest> requests = new ArrayList<>();
 
                 WriteResponseDTO imageResponseDTO = new WriteResponseDTO();
 
+//        System.out.println("image decoder ");
+//        System.out.println("sent image is " + writeRequestDTO.getDrawnImage());
                 ByteString imgBytes = base64Decoder.stringDecoder(writeRequestDTO.getDrawnImage());
 
-                String result = "";
-        populateSendRequest(requests,imgBytes);
+//        System.out.println("img Bytes is " + imgBytes);
+//        System.out.println("before populating send request");
 
+        if ( imgBytes == null)
+        {
+            return new WriteResponseDTO("",0.0d,"Image Sent is not base 64");
+        }
+        String inputLang = LanguageMapper.getLanguage(lang);
+        String result = "";
+//        populateSendRequest(requests,imgBytes);
+        ImageContext imageContext = ImageContext.newBuilder().addLanguageHints(lang).build();
+        Image img = Image.newBuilder().setContent(imgBytes).build();
+        Feature feat = Feature.newBuilder().setType(Feature.Type.DOCUMENT_TEXT_DETECTION).build();
+        AnnotateImageRequest request =
+                AnnotateImageRequest.newBuilder().addFeatures(feat).setImage(img).setImageContext(imageContext).build();
+        requests.add(request);
+
+//        System.out.println("after populating send request");
         // Initialize client that will be used to send requests. This client only needs to be created
                 // once, and can be reused for multiple requests. After completing all of your requests, call
                 // the "close" method on the client to safely clean up any remaining background resources.
@@ -152,7 +171,7 @@ public class CharacterWriteRecognitionServiceImpl implements CharacterWriteRecog
                     BatchAnnotateImagesResponse response = client.batchAnnotateImages(requests);
                     List<AnnotateImageResponse> responses = response.getResponsesList();
                     client.close();
-                    System.out.println("response request size is -----"  + responses.size());
+//                    System.out.println("response request size is -----"  + responses.size());
 
                     for (AnnotateImageResponse res : responses) {
 
@@ -176,10 +195,10 @@ public class CharacterWriteRecognitionServiceImpl implements CharacterWriteRecog
                                                 String wordText = "";
                                                 for (Symbol symbol : word.getSymbolsList()) {
                                                     wordText = wordText + symbol.getText();
-                                                    System.out.println("hashcode ---" + symbol.hashCode());
-                                                    System.out.format("Symbol text: %s (confidence: %f)%n" ,
-                                                                      symbol.getText() ,
-                                                                      symbol.getConfidence());
+//                                                    System.out.println("hashcode ---" + symbol.hashCode());
+//                                                    System.out.format("Symbol text: %s (confidence: %f)%n" ,
+//                                                                      symbol.getText() ,
+//                                                                      symbol.getConfidence());
                                                     result = symbol.getText();
                                                     populateCorrectResponse(imageResponseDTO ,symbol);
                                                     break;
@@ -210,13 +229,13 @@ public class CharacterWriteRecognitionServiceImpl implements CharacterWriteRecog
 //        return null;
     }
 
-    private static void populateCorrectResponse(WriteResponseDTO imageResponseDTO , Symbol symbol) {
+    public static void populateCorrectResponse(WriteResponseDTO imageResponseDTO , Symbol symbol) {
         imageResponseDTO.setCharacter(symbol.getText());
         imageResponseDTO.setPercentageAccuracy((double) symbol.getConfidence());
         imageResponseDTO.setError("");
     }
 
-    private static void populateErrorResponse(WriteResponseDTO imageResponseDTO , String errorMessage) {
+    public static void populateErrorResponse(WriteResponseDTO imageResponseDTO , String errorMessage) {
         System.out.format("Error: %s%n", errorMessage);
         //                    return;
         imageResponseDTO.setCharacter("");
@@ -224,13 +243,13 @@ public class CharacterWriteRecognitionServiceImpl implements CharacterWriteRecog
         imageResponseDTO.setError(errorMessage);
     }
 
-    private static void populateSendRequest(List<AnnotateImageRequest> requests , ByteString imgBytes) {
-
-        ImageContext imageContext = ImageContext.newBuilder().addLanguageHints("pan").build();
-        Image img = Image.newBuilder().setContent(imgBytes).build();
-        Feature feat = Feature.newBuilder().setType(Feature.Type.DOCUMENT_TEXT_DETECTION).build();
-        AnnotateImageRequest request =
-                AnnotateImageRequest.newBuilder().addFeatures(feat).setImage(img).setImageContext(imageContext).build();
-        requests.add(request);
-    }
+//    public  static void populateSendRequest(List<AnnotateImageRequest> requests , ByteString imgBytes) {
+//
+//        ImageContext imageContext = ImageContext.newBuilder().addLanguageHints("pan").build();
+//        Image img = Image.newBuilder().setContent(imgBytes).build();
+//        Feature feat = Feature.newBuilder().setType(Feature.Type.DOCUMENT_TEXT_DETECTION).build();
+//        AnnotateImageRequest request =
+//                AnnotateImageRequest.newBuilder().addFeatures(feat).setImage(img).setImageContext(imageContext).build();
+//        requests.add(request);
+//    }
 }
